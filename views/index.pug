@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p I am a dancer 
+
+  button(type="button", class="btn btn-secondary" onclick="doReduce()") Press Me
+  
+  div#reduce Reduce the value
+  a(href='http://localhost:3000/icecream') IcecreamLink
+  script.
+    let count = 20;
+    let change = -1;
+    function doReduce() {
+      count += change;
+      change -= 1;
+      document.getElementById('reduce').textContent = `Count ${count} with change ${change}`;
+    }
