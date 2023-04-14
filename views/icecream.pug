@@ -2,17 +2,17 @@ extends layout
 
 block content
   h2= title
-  - var icecream=[{icecream_flavour:"Vanilla",icecream_size:"small",icecream_cost:5},{icecream_flavour:"chocolate",icecream_size:"medium",icecream_cost:6},{icecream_flavour:"strawberry",icecream_size:"large",icecream_cost:8}]
+  - var icecream=results
   div(class="container-fluid")
-  div(class="row")
-   each i,index  in icecream
-    div(class="col-sm-2" onclick =`buy(${index})`)
-        p IcecreamName: #{i.icecream_flavour}, 
-        p IcecreamSize: #{i.icecream_size}, 
-        p IcecreamCost: #{i.icecream_cost}
-    script.
-        function buy(g)
-        {
-            alert(`You bought an Icecream ${g+1}`)
-        }
+    div(class="row")
+        each i,index  in icecream
+            div(class="col-sm-2" onclick =`buy(${index})`)
+                p IcecreamName: #{i.icecream_flavour}, 
+                p IcecreamSize: #{i.icecream_size}, 
+                p IcecreamCost: #{i.icecream_cost}
+  script.
+    function buy(g)
+    {
+        alert(`You bought an Icecream ${g+1}`)
+    }
         
