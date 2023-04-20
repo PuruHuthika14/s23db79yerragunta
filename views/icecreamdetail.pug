@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to detail
+  else
+    - let icecreamid = toShow._id
+    - let icecream_flavour= toShow.icecream_flavour
+    - let icecream_size= toShow.icecream_size
+    - let icecream_cost= toShow.icecream_cost
+
+    div
+      div.row
+        div(class='icecreamAttr mr-3') icecream ID is:
+        div #{icecreamid}
+      div.row
+        div(class='icecreamAttr mr-3') icecream flavour is:
+        div #{icecream_flavour}
+      div.row
+        div(class='icecreamAttr mr-3') icecream size is:
+        div #{icecream_size}
+      div.row
+        div(class='icecreamAttr mr-3') icecream cost is:
+        div #{icecream_cost}

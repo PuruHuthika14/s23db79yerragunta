@@ -1,0 +1,50 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let icecreamid = toShow._id
+    - let icecream_flavour = toShow.icecream_flavour
+    - let icecream_size = toShow.icecream_size
+    - let icecream_cost = toShow.icecream_cost
+    - let actionid = "/resource/icecream/" + icecreamid
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='icecreamAttr mr-3') icecream ID is:
+        div #{icecreamid}
+      div.row
+        div(class='icecreamAttr mr-3') icecream Name is:
+        div #{icecream_flavour}
+      div.row
+        div(class='icecreamAttr mr-3') icecream director is:
+        div #{icecream_size}
+      div.row
+        div(class='icecreamAttr mr-3') icecream timing is:
+        div #{icecream_cost}
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the icecream collection
+        window.location.href='/icecream'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeded")
+          window.location.href='/icecream'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error )
+        });
+      }
