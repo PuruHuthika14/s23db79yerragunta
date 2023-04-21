@@ -7,14 +7,15 @@ a {
   color:lightsalmon;
 }
 .icecreamAttr {
-  background-color:lightcoral;
+  background-color:lightblue;
   width: 130px;
   }
-  .movieAttr {
+  .icecreamAttr {
     background-color:burlywood;
-    width: 130px;
+    width: 120px;
    }
    h1{
-    color:orange;
+    color:red;
    }
+  
   
