@@ -2,17 +2,27 @@ extends layout
 
 block content
   h1= title
+  <br>
+   - let Create = `dispatch(\"/icecream/create\")`
+   button.btn( class="btn-primary ml-1", onclick= Create) Create
   - let items = results;
   div(class="container-fluid")
     div(class="row")
       each item,index in items
         - let destination = `dispatch(\"/icecream/update?id=${item._id}\")`
+        - let detail = `dispatch(\"/icecream/detail?id=${item._id}\")`
+        - let Delete = `dispatch(\"/icecream/delete?id=${item._id}\")`
         div(class="col-sm-2" class="m-1")
           h3 #{item.icecream_flavour}
           p #{item.icecream_size}
           p #{item.icecream_cost}
-          
           button.btn( class="btn-primary ml-1", onclick= destination) Update
+          br
+          br
+          button.btn( class="btn-secondary ml-1", onclick= detail) Details
+          br
+          br
+          button.btn( class="btn-danger ml-1", onclick= Delete) Delete
   script.
     function dispatch(path){
       console.log(path);
